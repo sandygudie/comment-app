@@ -1,6 +1,8 @@
 import React, { ImgHTMLAttributes } from "react";
 import Image from "next/image";
-import { useAppContext } from "../../context/index";
+// import { useAppContext } from "../../../context/index";
+import { useSelector } from 'react-redux';
+import { addComment,appData  } from "../../redux/commentSlice";
 
 interface Props {
   userimage: ImgHTMLAttributes<HTMLImageElement> | any;
@@ -12,7 +14,8 @@ interface Props {
 }
 
 function CommentHeader({ createdAt, username, userimage }: Props) {
-  const { currentUser } = useAppContext();
+  // const { currentUser } = useAppContext();
+  const data = useSelector(appData );
 
   return (
     <div className="flex items-center">
@@ -24,7 +27,7 @@ function CommentHeader({ createdAt, username, userimage }: Props) {
         className="rounded"
       />
       <p className="ml-3 font-semibold text-gray-500">{username}</p>
-      {currentUser.username === username && (
+      {data.currentUser.username === username && (
         <p className="px-[4px] ml-1 text-white text-xs bg-primary rounded-sm">
           YOU
         </p>

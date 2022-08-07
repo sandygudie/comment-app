@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { useAppContext } from "../context/index";
+import { useSelector, useDispatch } from "react-redux";
+import { addComment, appData, addReply } from "../redux/commentSlice";
+
 interface Props {
   commentId?: number;
   setIsReply?: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 export default function MessageBox({ commentId, setIsReply }: Props) {
-  const { currentUser, AddComment, AddReply } = useAppContext();
+  const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+  const data = useSelector(appData);
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -15,16 +19,22 @@ export default function MessageBox({ commentId, setIsReply }: Props) {
 
   const handleClick = (event) => {
     event.preventDefault();
-    commentId
-      ? (AddReply(message, commentId), setIsReply(false))
-      : AddComment(message);
+    if (message) {
+      commentId
+        ? (dispatch(addReply({ message, commentId })), setIsReply(false))
+        : dispatch(
+            addComment({
+              message,
+            })
+          );
+    }
     setMessage("");
   };
 
   return (
     <div className="w-full bg-white flex items-start p-4 my-4 rounded-md gap-x-4">
       <Image
-        src={currentUser.image.webp}
+        src={data.currentUser.image.webp}
         alt="currentUser_image"
         width={40}
         height={40}

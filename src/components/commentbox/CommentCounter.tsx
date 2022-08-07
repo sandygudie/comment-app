@@ -1,5 +1,7 @@
 import React from "react";
-import { useAppContext } from "../../context";
+import { useDispatch } from "react-redux";
+
+import { increaseScore, decreaseScore } from "../../redux/commentSlice";
 interface Props {
   score: number;
   commentId: number;
@@ -7,12 +9,12 @@ interface Props {
 }
 
 function CommentCounter({ score, commentId, className }: Props) {
-  const { increaseScore, decreaseScore } = useAppContext();
+  const dispatch = useDispatch();
   return (
     <div className={className}>
       <button
         onClick={() => {
-          increaseScore(commentId);
+          dispatch (increaseScore({ commentId }));
         }}
         className="font-medium outline-0 "
       >
@@ -21,7 +23,7 @@ function CommentCounter({ score, commentId, className }: Props) {
       <p className="font-normal py-1 text-primary ">{score}</p>
       <button
         onClick={() => {
-          decreaseScore(commentId);
+          dispatch(decreaseScore({ commentId }));
         }}
         className="font-medium  outline-0"
       >

@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { IoArrowUndo } from "react-icons/io5";
-import { useAppContext } from "../../context/index";
+// import { useAppContext } from "../../../context/index";
+import { addComment,appData } from "../../redux/commentSlice";
 import DeleteModal from "../DeleteModal";
+import { useSelector } from 'react-redux';
 
 interface Props {
   username: string;
   commentId: number;
   setIsReply: React.Dispatch<React.SetStateAction<boolean>>;
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  
 }
 
 function ReplyBox({ setIsReply, username, setIsEdit, commentId }: Props) {
-  const { currentUser } = useAppContext();
+  // const { currentUser } = useAppContext();
+  
+  const data = useSelector(appData );
 
   const replyMessage = () => {
     setIsReply(true);
@@ -24,7 +29,7 @@ function ReplyBox({ setIsReply, username, setIsEdit, commentId }: Props) {
         <DeleteModal commentId={commentId} setisDelete={setisDelete} />
       )}
       <div>
-        {currentUser.username !== username ? (
+        {data.currentUser.username !== username ? (
           <button
             className="text-primary text-sm outline-0 flex items-center"
             onClick={replyMessage}

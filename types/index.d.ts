@@ -1,48 +1,27 @@
-export interface CurrentUser {
+export interface User {
   image: {
     png: string;
     webp: string;
   };
   username: string;
 }
-
 export interface Comment {
   id: number;
   content: string;
   createdAt: string;
   score: number;
-  user: {
-    image: {
-      png: string;
-      webp: string;
-    };
-    username: string;
-  };
-  replies: {
-    id: number;
-    content: string;
-    createdAt: string;
-    score: number;
-    replyingTo: string;
-    user: {
-      image: {
-        png: string;
-        webp: string;
-      };
-      username: string;
-    };
-  }[];
+  user: User;
+  replies: Reply[];
 }
-
-export interface AppContextState {
-  comments: Comment[];
-  currentUser: CurrentUser;
-  deleteComment: (id: number) => void;
-  AddComment: (comments: string) => void;
-  AddReply: (comment: string,commentid: number) => void;
-  editComment: (comment: string,commentid: number) => void;
-  increaseScore: (commentid: number) => void;
-  decreaseScore: (commentid: number) => void;
-  isDelete:boolean, 
-  setisDelete :React.Dispatch<React.SetStateAction<boolean>>;
+export interface Reply {
+  id: number;
+  content: string;
+  createdAt: string;
+  score: number;
+  replyingTo: string;
+  user: User;
+}
+export interface AppState {
+  currentUser:User
+  comments:Comment
 }

@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "../styles/index.module.css";
-import { useAppContext } from "../context";
+import { useDispatch } from "react-redux";
+import { deleteComment } from "../redux/commentSlice";
 
 function DeleteModal({ commentId, setisDelete }) {
-  const { deleteComment } = useAppContext();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -25,7 +26,7 @@ function DeleteModal({ commentId, setisDelete }) {
           </button>
           <button
             onClick={() => {
-              deleteComment(commentId);
+              dispatch(deleteComment({ commentId }));
             }}
             className="py-3 px-6 bg-error rounded-md"
           >

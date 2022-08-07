@@ -2,7 +2,7 @@ import React from "react";
 import CommentMsg from "./CommentMsg";
 import CommentCounter from "./CommentCounter";
 import CommentHeader from "./CommentHeader";
-import { Comment } from "../../types";
+import { Comment } from "../../../types";
 import ReplyBox from "./ReplyBox";
 
 interface Props {

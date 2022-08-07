@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useAppContext } from "../../context";
+import { useDispatch } from "react-redux";
+import { editComment } from "../../redux/commentSlice";
 interface Props {
   content: string;
   commentId: number;
@@ -7,7 +8,7 @@ interface Props {
 }
 
 function EditMessagebox({ setIsEdit, content, commentId }: Props) {
-  const { editComment } = useAppContext();
+  const dispatch = useDispatch();
   const [editMsg, setEditMsg] = useState("");
   const handleChange = (event) => {
     setEditMsg(event.target.value);
@@ -15,7 +16,7 @@ function EditMessagebox({ setIsEdit, content, commentId }: Props) {
 
   const editCommenthandler = (event) => {
     event.preventDefault();
-    editComment(editMsg, commentId), setIsEdit(false);
+    dispatch(editComment({ editMsg, commentId })), setIsEdit(false);
   };
   return (
     <div className="w-full rounded-md">

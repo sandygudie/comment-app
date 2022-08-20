@@ -2,43 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-family: "Rubik";
-  font-weight: 300;
-  src: url("./fonts/Rubik/Rubik-Light.ttf") format("opentype");
-  font-display: swap;
-}
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 
-@font-face {
-  font-family: "Rubik";
-  font-weight: 400;
-  src: url("./fonts/Rubik/Rubik-Regular.ttf") format("opentype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rubik";
-  font-weight: 500;
-  src: url("./fonts/Rubik/Rubik-Medium.ttf") format("opentype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rubik";
-  font-weight: 700;
-  src: url("./fonts/Rubik/Rubik-Bold.ttf") format("opentype");
-  font-display: swap;
-} */
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
-
-/* html,
-body {
-  @apply font-lex;
-  @apply font-light;
-  scroll-behavior: smooth;
-  margin: 0;
-  background-color: hsl(223, 19%, 93%);
-} */
 html,
 body {
   font-family: "Rubik", sans-serif !important;
@@ -59,12 +24,9 @@ h6 {
   :root {
     --color-background: hsl(223, 19%, 93%);
     --color-text: hsl(211, 10%, 45%);
-    /* --color-input-background: white; */
   }
 }
 textarea::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: hsl(211, 10%, 45%);
-  opacity: 1; /* Firefox */
+  opacity: 1;
 }
-

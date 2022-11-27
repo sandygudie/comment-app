@@ -18,6 +18,6 @@ Users are able to:
 - TailwindCSS
 
 ### Experience
-I enjoyed using Redux to build this app. Though i felt the app was less complex for Redux, I used Redux because i wanted to improve my knowledge of reducers and how to handle updating states for nested array. 
+I enjoyed using Redux to build this app. Though i feel the app is less complex for Redux, I used Redux because i wanted to improve my knowledge of reducers and how to handle updating states for nested array. 
 
 #### App Built with React Context https://github.com/sandygudie/interactive-comments
